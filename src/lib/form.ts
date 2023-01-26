@@ -1,4 +1,4 @@
-import zfd from "zod-form-data";
+import { zfd } from "zod-form-data";
 import { typeToFlattenedError, z } from "zod";
 
 const checkNewsletter = zfd.formData({
