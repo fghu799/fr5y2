@@ -1,0 +1,29 @@
+---
+import { action, reject, resolve } from "astro-form-actions";
+import { validateForm } from "../lib/form";
+import { Form } from "../component/Form";
+
+const { response, error, inputValues } = await action(
+	Astro,
+	async (formData) => {
+		const validateResult = validateForm(formData);
+		if (validateResult.success) return resolve();
+		return reject(400, validateResult.error.flatten());
+	}
+);
+if (response) return response;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro form</title>
+	</head>
+	<body class="mx-auto w-fit my-4">
+		<h1 class="text-2xl font-bold my-4">Astro form actions + Zod</h1>
+		<Form errorData={error} inputValues={inputValues} client:idle />
+	</body>
+</html>
