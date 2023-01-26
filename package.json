@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/solid-js": "^2.0.0",
     "@astrojs/tailwind": "^3.0.0",
+    "@astrojs/vercel": "^3.0.0",
     "astro": "^2.0.0",
     "astro-form-actions": "^0.4.1",
     "solid-js": "^1.4.3",
